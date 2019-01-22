@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KvantCard", "KvantCard\KvantCard.csproj", "{4C5FE928-5461-470F-BA28-49966626F089}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{180AE98D-D9F3-45CC-8063-E254C92E03B9}"
+	ProjectSection(SolutionItems) = preProject
+		KvantCard\create.sql = KvantCard\create.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KvantLib", "KvantLib\KvantLib.csproj", "{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{4C5FE928-5461-470F-BA28-49966626F089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C5FE928-5461-470F-BA28-49966626F089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C5FE928-5461-470F-BA28-49966626F089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
