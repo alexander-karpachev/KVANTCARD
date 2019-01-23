@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KvantCard.Model
 {
     public class Contact : INotifyPropertyChanged
     {
+        [Key]
+        public int Id { get; set; }
+
         private List<String> email;
 
         public List<String> Email

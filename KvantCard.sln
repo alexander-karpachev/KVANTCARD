@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{180AE98D-D9F3-45CC-8063-E254C92E03B9}"
 	ProjectSection(SolutionItems) = preProject
 		KvantCard\create.sql = KvantCard\create.sql
+		ddl_kvantcard.sql = ddl_kvantcard.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KvantLib", "KvantLib\KvantLib.csproj", "{F7A2CC0B-B31D-4DA0-95F6-2466D8C2D2BE}"

@@ -13,12 +13,21 @@ namespace KvantCard.ViewModel
     {
         public void GetStudents(Db db)
         {
-            var students = db.Students.Include("Parents");
+            var students = db.Students.Include("Parents")
+                .Where(e => e.FirstName == "Vasya");
+            var student = students.First();
+            student.Parents.First().MiddleName = "fefdr";
+            student.DateTime = DateTime.Now;
+            db.SaveChanges();
         }
 
 
         public static List<Student> AllStudents()
         {
+            using(var db = new Db())
+            {
+                return db.Students.Include("Parents").ToList();
+            }
             /*
              * Выводится:
              *    0 - 7 данные о студенте
@@ -60,7 +69,7 @@ namespace KvantCard.ViewModel
                                     CultureInfo.GetCultureInfo("ru-RU")
                                     ),
                                 ProgramID = dr.GetInt32(5),
-                                Age = dr.GetInt32(6),
+                                //Age = dr.GetInt32(6),
                                 Parent1ID = dr.GetInt32(7),
                                 MentorID = dr.GetInt32(8),
                                 KvantumID = dr.GetInt32(9),
