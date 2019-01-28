@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KvantCard.Model
 {
-    class Mentor : _Human, INotifyPropertyChanged
+    public class Mentor : Human
     {
-        private List<int> kvantumID;
+        private List<int> _kvantumId;
 
-        public List<int> KvantumID
+        public List<int> KvantumId
         {
-            get { return kvantumID; }
-            set { kvantumID = value; OnPropertyChanged("statusID"); }
+            get => _kvantumId;
+            set { SetProperty(ref _kvantumId, value, () => KvantumId); }
         }
     }
 }

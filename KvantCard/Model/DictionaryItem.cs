@@ -1,35 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KvantCard.Model
 {
-    public class DictionaryItem : INotifyPropertyChanged
+    public class DictionaryItem : BaseEntity
     {
-        private int id;
-        //// test
-        public int ID
+        private string title;
+        public string Title
         {
-            get { return id; }
-            set { id = value;}
+            get => title;
+            set { SetProperty(ref title, value, () => Title); }
         }
 
-        private String title;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public String Title
-        {
-            get { return title; }
-            set { title = value; OnPropertyChanged("DateTime"); }
-        }
-
-        private void OnPropertyChanged(string v)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
-        }
     }
 }

@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KvantCard.Model 
+﻿namespace KvantCard.Model
 {
-    public class Parent : _Human, INotifyPropertyChanged
+    public class Parent : Human
     {
-        // родство с учащимся
-        private int statusID;
+        private int _statusId;
 
-        public int StatusID
+        public int StatusId
         {
-            get { return statusID; }
-            set { statusID = value; OnPropertyChanged("statusID"); }
+            get => _statusId;
+            set { SetProperty(ref _statusId, value, () => StatusId); }
         }
     }
 }
