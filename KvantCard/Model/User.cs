@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace KvantCard.Model
 {
     //Application user
-    public class User : BaseEntity
+    public class User : BaseIdEntity
     {
 
         private string _name;

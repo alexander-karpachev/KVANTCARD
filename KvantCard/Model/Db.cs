@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 
 namespace KvantCard.Model
@@ -8,20 +9,27 @@ namespace KvantCard.Model
     {
         private ILogger<Db> _logger;
 
+        public Db()
+        {
+
+        }
+
         public Db(DbContextOptions<Db> options, ILoggerFactory loggerFactory) : base(options)
         {
             _logger = loggerFactory.CreateLogger<Db>();
             //_logger.LogDebug($"New database context created {GetHashCode()}");
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
 
-            //var dbFileName = App.ContentPath;
-            //dbFileName = Path.GetFullPath(Path.Combine(dbFileName, "db.sqlite"));
-            //optionsBuilder.UseSqlite("Data Source=" + dbFileName);
+            if (_logger == null)
+            {
+                var dbFileName = App.GetContentPath(null);
+                dbFileName = Path.GetFullPath(Path.Combine(dbFileName, "db.sqlite"));
+                optionsBuilder.UseSqlite("Data Source=" + dbFileName);
+            }
 
             base.OnConfiguring(optionsBuilder);
         }
@@ -40,5 +48,25 @@ namespace KvantCard.Model
                 etb.HasMany<Parent>(e => e.Parents);
             });
         }
+
+        public IDbContextTransaction BeginTransaction()
+        {
+            var tr = Database.BeginTransaction();
+            //_logger.LogDebug($"New transaction started {GetHashCode()}");
+            return tr;
+        }
+
+        public void Commit()
+        {
+            Database.CommitTransaction();
+            //_logger.LogDebug($"Transaction commited {GetHashCode()}");
+        }
+
+        public void Rollback()
+        {
+            Database.RollbackTransaction();
+            //_logger.LogDebug($"Transaction rolled back {GetHashCode()}");
+        }
+
     }
 }

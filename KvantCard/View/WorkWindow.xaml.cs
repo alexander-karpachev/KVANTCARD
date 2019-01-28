@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using KvantCard.Repos;
 
 namespace KvantCard.View
 {
@@ -8,8 +9,12 @@ namespace KvantCard.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly StudentRepo _students;
+
+        public MainWindow(StudentRepo students)
         {
+            _students = students;
+
             InitializeComponent();
         }
 

@@ -27,7 +27,13 @@ namespace KvantCard.Migrations
 
                     b.Property<int?>("ContactId");
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
                     b.Property<string>("Street");
+
+                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
@@ -41,6 +47,12 @@ namespace KvantCard.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
+                    b.Property<DateTime>("Updated");
+
                     b.HasKey("Id");
 
                     b.ToTable("Contact");
@@ -51,7 +63,13 @@ namespace KvantCard.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
                     b.Property<string>("Title");
+
+                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
@@ -67,6 +85,10 @@ namespace KvantCard.Migrations
 
                     b.Property<int?>("ContactId");
 
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
@@ -76,6 +98,8 @@ namespace KvantCard.Migrations
                     b.Property<int>("StatusId");
 
                     b.Property<int?>("StudentId");
+
+                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
@@ -95,7 +119,11 @@ namespace KvantCard.Migrations
 
                     b.Property<int?>("ContactId");
 
+                    b.Property<DateTime>("Created");
+
                     b.Property<DateTime>("DateTime");
+
+                    b.Property<DateTime?>("Deleted");
 
                     b.Property<int>("DocumentSetId");
 
@@ -118,6 +146,8 @@ namespace KvantCard.Migrations
                     b.Property<int>("ProgramId");
 
                     b.Property<int>("SchoolId");
+
+                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 

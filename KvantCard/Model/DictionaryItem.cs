@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KvantCard.Model
 {
-    public class DictionaryItem : BaseEntity
+    public class DictionaryItem : BaseIdEntity
     {
         private string title;
         public string Title

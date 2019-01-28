@@ -2,7 +2,7 @@
 
 namespace KvantCard.Model
 {
-    public class Human : BaseEntity
+    public class Human : BaseIdEntity
     {
         private string _firstName;
         public string FirstName

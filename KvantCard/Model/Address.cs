@@ -1,6 +1,6 @@
 ﻿namespace KvantCard.Model
 {
-    public class Address : BaseEntity
+    public class Address : BaseIdEntity
     {
         private string _city;
         public string City

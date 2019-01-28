@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KvantCard.Model
 {
-    public class Contact : BaseEntity
+    public class Contact : BaseIdEntity
     {
         private List<string> _email;
         [NotMapped]

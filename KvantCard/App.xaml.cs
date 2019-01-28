@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using KvantCard.Model;
+using KvantCard.Repos;
+using KvantCard.Utils;
 using KvantCard.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +39,7 @@ namespace KvantCard
         public static bool IsConsole(string[] args)
         {
             bool isConsole;
-            if (Debugger.IsAttached || args.Contains("--console") ||
+            if (Debugger.IsAttached || (args != null && args.Contains("--console")) ||
                 string.Equals(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName).ToUpperInvariant(), "EF.EXE", StringComparison.Ordinal))
                 isConsole = true;
             else
@@ -47,7 +49,7 @@ namespace KvantCard
 
         public static string ContentPath { get; private set; }
 
-        private static string GetContentPath(string[] args)
+        public static string GetContentPath(string[] args)
         {
             if (ContentPath != null)
                 return ContentPath;
@@ -158,6 +160,13 @@ namespace KvantCard
 
         private void RegisterServices(IServiceCollection services)
         {
+            // Configure AutoMapper
+            _services.AddAutoMapper();
+
+            // Repos
+            _services.AddSingleton<StudentRepo>();
+
+            // Windows
             _services.AddSingleton<MainWindow>();
         }
 

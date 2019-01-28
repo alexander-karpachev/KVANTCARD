@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KvantCard.Model
 {
-    public class Document : BaseEntity
+    public class Document : BaseIdEntity
     {
         private string _title;
 
