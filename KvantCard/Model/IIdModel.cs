@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KvantLib
+namespace KvantCard.Model
 {
-    public class KvantInfra
+    public interface IIdModel : IDatedModel
     {
+        int Id { get; set; }
     }
 }

@@ -8,85 +8,44 @@ using System.Threading.Tasks;
 namespace KvantCard.Model
 {
     //Application user
-    public class User : INotifyPropertyChanged
+    public class User : BaseIdEntity
     {
-        private int id;
 
-        public int Id
-        {
-            get { return id; }
-            set
-            {
-                id = value;
-                OnPropertyChanged("Id");
-            }
-        }
-
-        private string name;
-
+        private string _name;
         public string Name
         {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged("Name");
-            }
+            get => _name;
+            set { SetProperty(ref _name, value, () => Name); }
         }
 
-        private string lastname;
-
-        public string Lastname
+        private string _lastName;
+        public string LastName
         {
-            get { return lastname; }
-            set
-            {
-                lastname = value;
-                OnPropertyChanged("Lastname");
-            }
+            get => _lastName;
+            set { SetProperty(ref _lastName, value, () => LastName); }
         }
 
-        private string username;
-
-        public string Username
+        private string _userName;
+        public string UserName
         {
-            get { return username; }
-            set
-            {
-                username = value;
-                OnPropertyChanged("Username");
-            }
+            get => _userName;
+            set { SetProperty(ref _userName, value, () => UserName); }
         }
 
-        private string email;
-
+        private string _email;
         public string Email
         {
-            get { return email; }
-            set
-            {
-                email = value;
-                OnPropertyChanged("Email");
-            }
+            get => _email;
+            set { SetProperty(ref _email, value, () => Email); }
         }
 
-        private string password;
-
+        private string _password;
         public string Password
         {
-            get { return password; }
-            set
-            {
-                password = value;
-                OnPropertyChanged("Password");
-            }
+            get => _password;
+            set { SetProperty(ref _password, value, () => Password); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
     }
 }

@@ -1,99 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KvantCard.Model 
+namespace KvantCard.Model
 {
-    public class Student : _Human, INotifyPropertyChanged
+    public class Student : Human
     {
-
-        private List<Parent> parents;
+        private List<Parent> _parents;
         public virtual List<Parent> Parents
         {
-            get { return parents; }
-            set { parents = value; OnPropertyChanged("Parents"); }
+            get => _parents;
+            set { SetProperty(ref _parents, value, () => Parents); }
         }
 
-        private int documentSetID;
-        public int DocumentSetID
+        private int _documentSetId;
+        public int DocumentSetId
         {
-            get { return documentSetID; }
-            set { documentSetID = value; OnPropertyChanged("DocumentSetID"); }
+            get => _documentSetId;
+            set { SetProperty(ref _documentSetId, value, () => DocumentSetId); }
         }
 
-        private DateTime dateTime;
+        private DateTime _dateTime;
         public DateTime DateTime
         {
-            get { return dateTime; }
-            set { dateTime = value; OnPropertyChanged("DateTime"); }
+            get => _dateTime;
+            set { SetProperty(ref _dateTime, value, () => DateTime); }
         }
 
-        private int age;
-        public int Age
+        private int _age;
+        public int Age => (int)((DateTime.Now - BirthDate).Days / 365.25);
+
+        private int _parent1Id;
+        public int Parent1Id
         {
-            get { return (int)((DateTime.Now - BirthDate).Days / 365.25); }
+            get => _parent1Id;
+            set { SetProperty(ref _parent1Id, value, () => Parent1Id); }
         }
 
-        private int parent1ID;
-        public int Parent1ID
+        private int _mentorId;
+        public int MentorId
         {
-            get { return parent1ID; }
-            set { parent1ID = value; }
+            get => _mentorId;
+            set { SetProperty(ref _mentorId, value, () => MentorId); }
         }
 
-        private int mentorID;
-        public int MentorID
+        private int _levelId;
+        public int LevelId
         {
-            get { return mentorID; }
-            set { mentorID = value; }
+            get => _levelId;
+            set { SetProperty(ref _levelId, value, () => LevelId); }
         }
 
-        private int levelID;
-        public int LevelID
+        private int _kvantumId;
+        public int KvantumId
         {
-            get { return levelID; }
-            set { levelID = value; }
+            get => _kvantumId;
+            set { SetProperty(ref _kvantumId, value, () => KvantumId); }
         }
 
-        private int kvantumID;
-        public int KvantumID
+        private int _groupId;
+        public int GroupId
         {
-            get { return kvantumID; }
-            set { kvantumID = value; }
+            get => _groupId;
+            set { SetProperty(ref _groupId, value, () => GroupId); }
         }
 
-        private int groupID;
-        public int GroupID
-        {
-            get { return groupID; }
-            set { groupID = value; }
-        }
-
-        public List<DictionaryItem> KvantumDict { get; set; }
-        public string KvantumTitle
-        {
-            get { return KvantumDict.Find(x => x.ID == KvantumID).Title; } 
-        }
+        //public List<DictionaryItem> KvantumDict { get; set; }
+        //public string KvantumTitle
+        //{
+        //    get { return KvantumDict.Find(x => x.Id == KvantumId).Title; }
+        //}
 
         // В текущей реализации это набор данных о полной истории посещения
         // кванториум, которая хранится в student_program_hist;
-        private int programID;
-
-        public int ProgramID
+        private int _programId;
+        public int ProgramId
         {
-            get { return programID; }
-            set { programID = value; OnPropertyChanged("ProgramID"); }
+            get => _programId;
+            set { SetProperty(ref _programId, value, () => ProgramId); }
         }
 
-        private int schoolID;
-
-        public int SchoolID
+        private int _schoolId;
+        public int SchoolId
         {
-            get { return schoolID; }
-            set { schoolID = value; OnPropertyChanged("SchoolID"); }
+            get => _schoolId;
+            set { SetProperty(ref _schoolId, value, () => SchoolId); }
         }
     }
 }

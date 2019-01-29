@@ -1,47 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KvantCard.Model
+﻿namespace KvantCard.Model
 {
-    public class Address : INotifyPropertyChanged
+    public class Address : BaseIdEntity
     {
-        [Key]
-        public int Id { get; set; }
-
-        private String city;
-
-        public String City
+        private string _city;
+        public string City
         {
-            get { return city; }
-            set { city = value; OnPropertyChanged("City"); }
+            get => _city;
+            set { SetProperty(ref _city, value, () => City); }
         }
 
-        private String street;
-
-        public String Street
+        private string _street;
+        public string Street
         {
-            get { return street; }
-            set { street = value; OnPropertyChanged("Street"); }
+            get => _street;
+            set { SetProperty(ref _street, value, () => Street); }
         }
 
-        private String appartment;
-
-        public String Appartment
+        private string _apartment;
+        public string Apartment
         {
-            get { return appartment; }
-            set { appartment = value; OnPropertyChanged("Appartment"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _apartment;
+            set { SetProperty(ref _apartment, value, () => Apartment); }
         }
     }
 }

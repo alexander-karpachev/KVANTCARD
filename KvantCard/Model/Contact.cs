@@ -1,49 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Mail;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KvantCard.Model
 {
-    public class Contact : INotifyPropertyChanged
+    public class Contact : BaseIdEntity
     {
-        [Key]
-        public int Id { get; set; }
-
-        private List<String> email;
-
-        public List<String> Email
+        private List<string> _email;
+        [NotMapped]
+        public List<string> Email
         {
-            get { return email; }
-            set { email = value; OnPropertyChanged("Email");  }
+            get => _email;
+            set { SetProperty(ref _email, value, () => Email); }
         }
 
-        private List<String> phoneNumber;
-
-        public List<String> PhoneNumber
+        private List<string> _phoneNumber;
+        [NotMapped]
+        public List<string> PhoneNumber
         {
-            get { return phoneNumber; }
-            set { phoneNumber = value; OnPropertyChanged("PhoneNumber"); }
+            get => _phoneNumber;
+            set { SetProperty(ref _phoneNumber, value, () => PhoneNumber); }
         }
 
-        private List<Address> address;
+        private List<Address> _address;
 
         public List<Address> Address
         {
-            get { return address; }
-            set { address = value; OnPropertyChanged("Address"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _address;
+            set { SetProperty(ref _address, value, () => Address); }
         }
     }
-
 }

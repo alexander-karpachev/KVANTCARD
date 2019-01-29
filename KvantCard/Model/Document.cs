@@ -1,37 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KvantCard.Model
 {
-    class Document : INotifyPropertyChanged
+    public class Document : BaseIdEntity
     {
-        private int id;
+        private string _title;
 
-        public int ID
+        public string Title
         {
-            get { return id; }
-            set { id = value; }
+            get => _title;
+            set { SetProperty(ref _title, value, () => Title); }
         }
 
-        private String title;
-
-        public String Title
-        {
-            get { return title; }
-            set { title = value; OnPropertyChanged("Title"); }
-        }
-        
-        //TODO: Добавить данные о документе
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
