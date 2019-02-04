@@ -26,7 +26,7 @@ namespace KvantCard.Model
 
             if (_logger == null)
             {
-                var dbFileName = App.GetContentPath(null);
+                var dbFileName = AppStarter.ContentRoot;
                 dbFileName = Path.GetFullPath(Path.Combine(dbFileName, "db.sqlite"));
                 optionsBuilder.UseSqlite("Data Source=" + dbFileName);
             }
