@@ -8,12 +8,6 @@ namespace KvantCard.Model
 {
     public class Mentor : Human
     {
-        private List<int> _kvantumId;
-
-        public List<int> KvantumId
-        {
-            get => _kvantumId;
-            set { SetProperty(ref _kvantumId, value, () => KvantumId); }
-        }
+        public List<int> KvantumId { get; set; }
     }
 }

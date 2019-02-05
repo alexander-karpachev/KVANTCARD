@@ -60,6 +60,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Repos\GenericRepo.cs" />
+    <Compile Include="Repos\IGenericRepo.cs" />
+    <Compile Include="Repos\RepoExtensions.cs" />
+    <Compile Include="Vms\AddressVm.cs" />
+    <Compile Include="Vms\BaseIdVm.cs" />
+    <Compile Include="Vms\BaseVm.cs" />
+    <Compile Include="Vms\ContactVm.cs" />
+    <Compile Include="Vms\DictionaryItemVm.cs" />
+    <Compile Include="Vms\DocumentVm.cs" />
+    <Compile Include="Vms\EmployeeVm.cs" />
+    <Compile Include="Vms\HumanVm.cs" />
+    <Compile Include="Vms\MentorVm.cs" />
+    <Compile Include="Vms\ParentVm.cs" />
+    <Compile Include="Vms\StudentVm.cs" />
+    <Compile Include="Vms\UserVm.cs" />
     <Page Include="View\WorkWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppStarter.cs" />
     <Compile Include="Migrations\20190128055803_Initial.cs" />
     <Compile Include="Migrations\20190128055803_Initial.designer.cs">
       <DependentUpon>20190128055803_Initial.cs</DependentUpon>
@@ -81,11 +97,8 @@
     <Compile Include="Model\Mentor.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Repos\AutoMapperProfile.cs" />
-    <Compile Include="Repos\BaseRepo.cs" />
-    <Compile Include="Repos\IBaseRepo.cs" />
-    <Compile Include="Repos\StudentRepo.cs" />
     <Compile Include="Utils\DependencyContext.cs" />
-    <Compile Include="Utils\StudentsRes.cs" />
+    <Compile Include="Services\StudentService.cs" />
     <Compile Include="View\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -120,6 +133,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -160,6 +176,12 @@
       <Version>2.2.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json">
+      <Version>2.2.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>2.2.0</Version>

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KvantCard.Model;
 
-namespace KvantCard.Utils
+namespace KvantCard.Services
 {
-    public class StudentsRes
+    public class StudentService
     {
         public List<String> navigationItems { get; set; }
 
@@ -33,7 +30,7 @@ namespace KvantCard.Utils
 
         //public NewStudentCommand newStudentCommand { get; set; }
 
-        public StudentsRes()
+        public StudentService()
         {
             //newStudentCommand = new NewStudentCommand(this);
 

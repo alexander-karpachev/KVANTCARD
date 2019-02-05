@@ -8,12 +8,7 @@ namespace KvantCard.Model
 {
     public class DictionaryItem : BaseIdEntity
     {
-        private string title;
-        public string Title
-        {
-            get => title;
-            set { SetProperty(ref title, value, () => Title); }
-        }
+        public string Title { get; set; }
 
     }
 }

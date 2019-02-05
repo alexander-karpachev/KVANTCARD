@@ -53,6 +53,10 @@ namespace KvantCard.Migrations
 
                     b.Property<DateTime>("Updated");
 
+                    b.Property<string>("Emails");
+
+                    b.Property<string>("PhoneNumbers");
+
                     b.HasKey("Id");
 
                     b.ToTable("Contact");

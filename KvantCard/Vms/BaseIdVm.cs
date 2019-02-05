@@ -6,27 +6,31 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using KvantCard.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace KvantCard.Model
+namespace KvantCard.Vms
 {
-    public abstract class BaseIdEntity : BaseEntity, IIdModel, IEquatable<BaseIdEntity>
+    public class BaseIdVm : BaseVm, IIdModel, IEquatable<BaseIdVm>
     {
-        [Key]
-        [Column(Order = 0)]
-        public int Id { get; set; }
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            set { SetProperty(ref _id, value, () => Id); }
+        }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is BaseIdEntity other) || GetType() != other.GetType())
+            if (!(obj is BaseIdVm other) || GetType() != other.GetType())
                 return false;
             if (other.Id == 0 && other.Id == 0)
                 return ReferenceEquals(this, obj);
             return other.Id == Id;
         }
 
-        public bool Equals(BaseIdEntity other)
+        public bool Equals(BaseIdVm other)
         {
             return Id == other?.Id;
         }
@@ -46,12 +50,12 @@ namespace KvantCard.Model
             return _hash;
         }
 
-        public static bool operator ==(BaseIdEntity left, BaseIdEntity right)
+        public static bool operator ==(BaseIdVm left, BaseIdVm right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(BaseIdEntity left, BaseIdEntity right)
+        public static bool operator !=(BaseIdVm left, BaseIdVm right)
         {
             return !Equals(left, right);
         }
@@ -68,7 +72,7 @@ namespace KvantCard.Model
             var strRep = JsonConvert.SerializeObject(this, Formatting.Indented,
                 new JsonSerializerSettings
                 {
-                    ContractResolver = SimpleResolver.Instance,
+                    ContractResolver = BaseIdVm.SimpleResolver.Instance,
                     TypeNameHandling = TypeNameHandling.All
                 });
             var str = $"DB Object with ID:{this.Id}:{this.GetType().FullName}\n{strRep}";
@@ -77,7 +81,7 @@ namespace KvantCard.Model
 
         public class SimpleResolver : DefaultContractResolver
         {
-            public static readonly SimpleResolver Instance = new SimpleResolver();
+            public static readonly BaseIdVm.SimpleResolver Instance = new BaseIdVm.SimpleResolver();
 
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
             {
