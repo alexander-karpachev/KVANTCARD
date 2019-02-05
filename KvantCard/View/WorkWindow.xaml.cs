@@ -9,11 +9,8 @@ namespace KvantCard.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly StudentRepo _students;
-
-        public MainWindow(StudentRepo students)
+        public MainWindow()
         {
-            _students = students;
 
             InitializeComponent();
         }

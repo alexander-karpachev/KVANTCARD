@@ -213,7 +213,9 @@ namespace KvantCard
             services.AddAutoMapper();
 
             // Repos
-            services.AddSingleton<StudentRepo>();
+            services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+
+            // Services
 
             // Windows
             services.AddSingleton<MainWindow>();

@@ -60,6 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Repos\GenericRepo.cs" />
+    <Compile Include="Repos\IGenericRepo.cs" />
+    <Compile Include="Repos\RepoExtensions.cs" />
+    <Compile Include="Vms\BaseIdVm.cs" />
+    <Compile Include="Vms\BaseVm.cs" />
     <Page Include="View\WorkWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,9 +87,6 @@
     <Compile Include="Model\Mentor.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Repos\AutoMapperProfile.cs" />
-    <Compile Include="Repos\BaseRepo.cs" />
-    <Compile Include="Repos\IBaseRepo.cs" />
-    <Compile Include="Repos\StudentRepo.cs" />
     <Compile Include="Utils\DependencyContext.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="View\WorkWindow.xaml.cs">

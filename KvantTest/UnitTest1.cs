@@ -15,7 +15,6 @@ namespace KvantTest
         [Fact]
         public void Test1()
         {
-            Assert.Equal("C:\\Apps\\Projects\\_Dy\\KVANTCARD", AppStarter.ContentRoot);
             var loggerFactory = Provider.GetRequiredService<ILoggerFactory>();
             var logger = loggerFactory.CreateLogger<UnitTest1>();
             logger.LogError("Error test");
