@@ -13,14 +13,9 @@ namespace KvantCard.Model
 {
     public abstract class BaseIdEntity : BaseEntity, IIdModel, IEquatable<BaseIdEntity>
     {
-        private int _id;
         [Key]
         [Column(Order = 0)]
-        public int Id
-        {
-            get => _id;
-            set { SetProperty(ref _id, value, () => Id); }
-        }
+        public int Id { get; set; }
 
         public override bool Equals(object obj)
         {

@@ -5,64 +5,23 @@ namespace KvantCard.Model
 {
     public class Student : Human
     {
-        private List<Parent> _parents;
-        public virtual List<Parent> Parents
-        {
-            get => _parents;
-            set { SetProperty(ref _parents, value, () => Parents); }
-        }
+        public virtual List<Parent> Parents { get; set; }
 
-        private int _documentSetId;
-        public int DocumentSetId
-        {
-            get => _documentSetId;
-            set { SetProperty(ref _documentSetId, value, () => DocumentSetId); }
-        }
+        public int DocumentSetId { get; set; }
 
-        private DateTime _dateTime;
-        public DateTime DateTime
-        {
-            get => _dateTime;
-            set { SetProperty(ref _dateTime, value, () => DateTime); }
-        }
+        public DateTime DateTime { get; set; }
 
-        private int _age;
         public int Age => (int)((DateTime.Now - BirthDate).Days / 365.25);
 
-        private int _parent1Id;
-        public int Parent1Id
-        {
-            get => _parent1Id;
-            set { SetProperty(ref _parent1Id, value, () => Parent1Id); }
-        }
+        public int Parent1Id { get; set; }
 
-        private int _mentorId;
-        public int MentorId
-        {
-            get => _mentorId;
-            set { SetProperty(ref _mentorId, value, () => MentorId); }
-        }
+        public int MentorId { get; set; }
 
-        private int _levelId;
-        public int LevelId
-        {
-            get => _levelId;
-            set { SetProperty(ref _levelId, value, () => LevelId); }
-        }
+        public int LevelId { get; set; }
 
-        private int _kvantumId;
-        public int KvantumId
-        {
-            get => _kvantumId;
-            set { SetProperty(ref _kvantumId, value, () => KvantumId); }
-        }
+        public int KvantumId { get; set; }
 
-        private int _groupId;
-        public int GroupId
-        {
-            get => _groupId;
-            set { SetProperty(ref _groupId, value, () => GroupId); }
-        }
+        public int GroupId { get; set; }
 
         //public List<DictionaryItem> KvantumDict { get; set; }
         //public string KvantumTitle
@@ -72,18 +31,8 @@ namespace KvantCard.Model
 
         // В текущей реализации это набор данных о полной истории посещения
         // кванториум, которая хранится в student_program_hist;
-        private int _programId;
-        public int ProgramId
-        {
-            get => _programId;
-            set { SetProperty(ref _programId, value, () => ProgramId); }
-        }
+        public int ProgramId { get; set; }
 
-        private int _schoolId;
-        public int SchoolId
-        {
-            get => _schoolId;
-            set { SetProperty(ref _schoolId, value, () => SchoolId); }
-        }
+        public int SchoolId { get; set; }
     }
 }

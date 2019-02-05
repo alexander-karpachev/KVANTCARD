@@ -5,7 +5,7 @@ using KvantCard.Utils;
 
 namespace KvantCard.Model
 {
-    public abstract class BaseEntity : NotifiableBase, IDatedModel
+    public abstract class BaseEntity : IDatedModel
     {
         protected BaseEntity()
         {
@@ -13,34 +13,22 @@ namespace KvantCard.Model
             Updated = DateTime.UtcNow;
         }
 
-        private DateTime _created;
         /// <summary>
         /// Record creation date
         /// </summary>
         [Column(Order = 100)]
-        public DateTime Created {
-            get => _created;
-            set { SetProperty(ref _created, value, () => Created); }
-        }
+        public DateTime Created { get; set; }
 
-        private DateTime _updated;
         /// <summary>
         /// Record last update date (including creation and deletion)
         /// </summary>
         [Column(Order = 101)]
-        public DateTime Updated {
-            get => _updated;
-            set { SetProperty(ref _updated, value, () => Updated); }
-        }
+        public DateTime Updated { get; set; }
 
-        private DateTime? _deleted;
         /// <summary>
         /// Record deleting date
         /// </summary>
         [Column(Order = 102)]
-        public DateTime? Deleted {
-            get => _deleted;
-            set { SetProperty(ref _deleted, value, () => Deleted); }
-        }
+        public DateTime? Deleted { get; set; }
     }
 }

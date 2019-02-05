@@ -63,8 +63,18 @@
     <Compile Include="Repos\GenericRepo.cs" />
     <Compile Include="Repos\IGenericRepo.cs" />
     <Compile Include="Repos\RepoExtensions.cs" />
+    <Compile Include="Vms\AddressVm.cs" />
     <Compile Include="Vms\BaseIdVm.cs" />
     <Compile Include="Vms\BaseVm.cs" />
+    <Compile Include="Vms\ContactVm.cs" />
+    <Compile Include="Vms\DictionaryItemVm.cs" />
+    <Compile Include="Vms\DocumentVm.cs" />
+    <Compile Include="Vms\EmployeeVm.cs" />
+    <Compile Include="Vms\HumanVm.cs" />
+    <Compile Include="Vms\MentorVm.cs" />
+    <Compile Include="Vms\ParentVm.cs" />
+    <Compile Include="Vms\StudentVm.cs" />
+    <Compile Include="Vms\UserVm.cs" />
     <Page Include="View\WorkWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

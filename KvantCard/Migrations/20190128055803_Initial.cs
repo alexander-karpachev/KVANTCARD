@@ -20,7 +20,9 @@ namespace KvantCard.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Created = table.Column<DateTime>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
-                    Deleted = table.Column<DateTime>(nullable: true)
+                    Deleted = table.Column<DateTime>(nullable: true),
+                    Emails = table.Column<string>(nullable: true),
+                    PhoneNumbers = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

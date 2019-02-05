@@ -11,41 +11,15 @@ namespace KvantCard.Model
     public class User : BaseIdEntity
     {
 
-        private string _name;
-        public string Name
-        {
-            get => _name;
-            set { SetProperty(ref _name, value, () => Name); }
-        }
+        public string Name { get; set; }
 
-        private string _lastName;
-        public string LastName
-        {
-            get => _lastName;
-            set { SetProperty(ref _lastName, value, () => LastName); }
-        }
+        public string LastName { get; set; }
 
-        private string _userName;
-        public string UserName
-        {
-            get => _userName;
-            set { SetProperty(ref _userName, value, () => UserName); }
-        }
+        public string UserName { get; set; }
 
-        private string _email;
-        public string Email
-        {
-            get => _email;
-            set { SetProperty(ref _email, value, () => Email); }
-        }
+        public string Email { get; set; }
 
-        private string _password;
-        public string Password
-        {
-            get => _password;
-            set { SetProperty(ref _password, value, () => Password); }
-        }
+        public string Password { get; set; }
 
-        
     }
 }

@@ -8,13 +8,7 @@ namespace KvantCard.Model
 {
     public class Document : BaseIdEntity
     {
-        private string _title;
-
-        public string Title
-        {
-            get => _title;
-            set { SetProperty(ref _title, value, () => Title); }
-        }
+        public string Title { get; set; }
 
     }
 }

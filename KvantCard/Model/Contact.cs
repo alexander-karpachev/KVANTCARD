@@ -5,28 +5,10 @@ namespace KvantCard.Model
 {
     public class Contact : BaseIdEntity
     {
-        private List<string> _email;
-        [NotMapped]
-        public List<string> Email
-        {
-            get => _email;
-            set { SetProperty(ref _email, value, () => Email); }
-        }
+        public string Emails { get; set; }
 
-        private List<string> _phoneNumber;
-        [NotMapped]
-        public List<string> PhoneNumber
-        {
-            get => _phoneNumber;
-            set { SetProperty(ref _phoneNumber, value, () => PhoneNumber); }
-        }
+        public string PhoneNumbers { get; set; }
 
-        private List<Address> _address;
-
-        public List<Address> Address
-        {
-            get => _address;
-            set { SetProperty(ref _address, value, () => Address); }
-        }
+        public List<Address> Addresses { get; set; }
     }
 }

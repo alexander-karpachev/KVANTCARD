@@ -12,7 +12,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace KvantCard.Vms
 {
-    class BaseIdVm : BaseVm, IIdModel, IEquatable<BaseIdVm>
+    public class BaseIdVm : BaseVm, IIdModel, IEquatable<BaseIdVm>
     {
         private int _id;
         public int Id
