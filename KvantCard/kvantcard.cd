@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KvantCard.App" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.AppStarter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAWAAAQACAEAAAQCAABAAKAUAAAACMAgAECAAAYAUA=</HashCode>
+      <FileName>AppStarter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvantCard.Migrations.Initial" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20190128055803_Initial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Migrations.DbModelSnapshot" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\DbModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Address" Collapsed="true">
+    <Position X="8" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAQAAAAAA=</HashCode>
+      <FileName>Model\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.BaseEntity" Collapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvantCard.Model.BaseIdEntity" Collapsed="true">
+    <Position X="10.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEgAAAAAAAAAAAAIBAAAAAAAAAAiA=</HashCode>
+      <FileName>Model\BaseIdEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvantCard.Model.Contact" Collapsed="true">
+    <Position X="1.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Db" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEABAQAAAAACAAAAAAAAMAIAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Model\Db.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.DictionaryItem" Collapsed="true">
+    <Position X="3.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\DictionaryItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Document" Collapsed="true">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Document.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Employee" Collapsed="true">
+    <Position X="19.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Human" Collapsed="true">
+    <Position X="16" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAACAAQAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Model\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Mentor" Collapsed="true">
+    <Position X="12.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Model\Mentor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Parent" Collapsed="true">
+    <Position X="14.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Parent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.Student" Collapsed="true">
+    <Position X="17" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAAAAgAAAAEAAAAAAARAAAAQIAAAAAAAoEAA=</HashCode>
+      <FileName>Model\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Model.User" Collapsed="true">
+    <Position X="10.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAAAAAACAQAAAAAAAAg=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Properties.Resources" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Properties.Settings" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Repos.AutoMapperProfile" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repos\AutoMapperProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Repos.GenericRepo&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BASAgAAAAQAAAAAAAAAAKAAAIAEIBEAAAgAAAAAAAIQ=</HashCode>
+      <FileName>Repos\GenericRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvantCard.Repos.RepoExtensions" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repos\RepoExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Services.StudentService" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAABAACAAAAAAAACAAAAgAAAAKAAACAAA=</HashCode>
+      <FileName>Services\StudentService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Utils.DependencyContext" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Utils\DependencyContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Utils.Extensions" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Utils\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Utils.NotifiableBase" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\NotifiableBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvantCard.Utils.PropertyChangedHelper" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\PropertyChangedHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.View.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\WorkWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvantCard.Vms.AddressVm" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAQCACAAA=</HashCode>
+      <FileName>Vms\AddressVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.BaseIdVm" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEgABAAAAAAAAAAIBAAAAAAAAAAiA=</HashCode>
+      <FileName>Vms\BaseIdVm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvantCard.Vms.BaseVm" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAgAAAAAEAAAAAAAAgQAQAAAAAAAAAA=</HashCode>
+      <FileName>Vms\BaseVm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvantCard.Vms.ContactVm" Collapsed="true">
+    <Position X="19.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAAAAAAAQAAAAAAAAAACAAAAAEAAAAE=</HashCode>
+      <FileName>Vms\ContactVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.DictionaryItemVm" Collapsed="true">
+    <Position X="1.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vms\DictionaryItemVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.DocumentVm" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vms\DocumentVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.EmployeeVm" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vms\EmployeeVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.HumanVm" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAAAIIACAACEEQAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Vms\HumanVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.MentorVm" Collapsed="true">
+    <Position X="12.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Vms\MentorVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.ParentVm" Collapsed="true">
+    <Position X="14.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vms\ParentVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.StudentVm" Collapsed="true">
+    <Position X="17" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQCgUAgAAqAAAAAAsAAAAARAAACQIAAAAAAAoEAA=</HashCode>
+      <FileName>Vms\StudentVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvantCard.Vms.UserVm" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACAAAAAAAAEAAAQAAAAAAAACAQIAAAAAAAk=</HashCode>
+      <FileName>Vms\UserVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="KvantCard.Model.IDatedModel" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\IDatedModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KvantCard.Model.IIdModel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\IIdModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KvantCard.Repos.IGenericRepo&lt;T&gt;" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAQAAAAAAAAAACAAAAAEIAEAAAgAAAAAAAIQ=</HashCode>
+      <FileName>Repos\IGenericRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
