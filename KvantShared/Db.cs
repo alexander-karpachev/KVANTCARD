@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using KvantShared.Model;
 using KvantShared.Utils;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,10 @@ namespace KvantShared
         private readonly IAppStarter _appStarter;
         private ILogger<Db> _logger;
 
-        public Db()
-        {
+        //public Db()
+        //{
 
-        }
+        //}
 
         public Db(DbContextOptions<Db> options, IAppStarter appStarter, ILoggerFactory loggerFactory) : base(options)
         {
@@ -30,10 +31,10 @@ namespace KvantShared
 
             if (_logger == null)
             {
-                var dbFileName = _appStarter.ContentRoot;
-                dbFileName = Path.GetFullPath(Path.Combine(dbFileName, "db.sqlite"));
-                _appStarter.ConfigureDb(optionsBuilder, "sqlite", "Data Source=" + dbFileName);
-                //optionsBuilder.UseSqlite("Data Source=" + dbFileName);
+                throw new Exception("Please use DI to instantiate DbContext");
+                //var dbFileName = _appStarter.ContentRoot;
+                //dbFileName = Path.GetFullPath(Path.Combine(dbFileName, "db.sqlite"));
+                //_appStarter.ConfigureWithDbBuilder(optionsBuilder, "sqlite", "Data Source=" + dbFileName);
             }
 
             base.OnConfiguring(optionsBuilder);

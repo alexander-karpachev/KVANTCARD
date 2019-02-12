@@ -9,6 +9,6 @@ namespace KvantShared.Utils
     {
         string ContentRoot { get; }
 
-        void ConfigureDb(DbContextOptionsBuilder options, string provider, string connectionStr);
+        void ConfigureWithDbBuilder(DbContextOptionsBuilder options, string provider, string connectionStr);
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KvantCard.Migrations
 {
     [DbContext(typeof(Db))]
-    [Migration("20190128055803_Initial")]
+    [Migration("20190212223056_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,7 +18,7 @@ namespace KvantCard.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
 
-            modelBuilder.Entity("KvantCard.Model.Address", b =>
+            modelBuilder.Entity("KvantShared.Model.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -44,7 +44,7 @@ namespace KvantCard.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Contact", b =>
+            modelBuilder.Entity("KvantShared.Model.Contact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -53,6 +53,10 @@ namespace KvantCard.Migrations
 
                     b.Property<DateTime?>("Deleted");
 
+                    b.Property<string>("Emails");
+
+                    b.Property<string>("PhoneNumbers");
+
                     b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
@@ -60,7 +64,7 @@ namespace KvantCard.Migrations
                     b.ToTable("Contact");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.DictionaryItem", b =>
+            modelBuilder.Entity("KvantShared.Model.DictionaryItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -78,7 +82,7 @@ namespace KvantCard.Migrations
                     b.ToTable("DictionaryItems");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Parent", b =>
+            modelBuilder.Entity("KvantShared.Model.Parent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -112,7 +116,7 @@ namespace KvantCard.Migrations
                     b.ToTable("Parents");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Student", b =>
+            modelBuilder.Entity("KvantShared.Model.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -158,27 +162,27 @@ namespace KvantCard.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Address", b =>
+            modelBuilder.Entity("KvantShared.Model.Address", b =>
                 {
-                    b.HasOne("KvantCard.Model.Contact")
-                        .WithMany("Address")
+                    b.HasOne("KvantShared.Model.Contact")
+                        .WithMany("Addresses")
                         .HasForeignKey("ContactId");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Parent", b =>
+            modelBuilder.Entity("KvantShared.Model.Parent", b =>
                 {
-                    b.HasOne("KvantCard.Model.Contact", "Contact")
+                    b.HasOne("KvantShared.Model.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId");
 
-                    b.HasOne("KvantCard.Model.Student")
+                    b.HasOne("KvantShared.Model.Student")
                         .WithMany("Parents")
                         .HasForeignKey("StudentId");
                 });
 
-            modelBuilder.Entity("KvantCard.Model.Student", b =>
+            modelBuilder.Entity("KvantShared.Model.Student", b =>
                 {
-                    b.HasOne("KvantCard.Model.Contact", "Contact")
+                    b.HasOne("KvantShared.Model.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId");
                 });

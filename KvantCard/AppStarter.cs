@@ -31,8 +31,9 @@ namespace KvantCard
 
         private string _dbProvider;
         private string _dbConnectionStr;
-        private const string ProjectName = @"\KvantCard";
-        private const string DbFileName = "db.sqlite";
+        public const string ProjectName = @"\KvantCard";
+        public const string DbFileName = "db.sqlite";
+        public const string DbDefaultProvider = "sqlite";
         public const string LogsFolder = "Logs";
 
         private IConfiguration _configuration;
@@ -85,6 +86,8 @@ namespace KvantCard
             _configuration = LoadConfig();
             if (_dbProvider == null)
                 _dbProvider = _configuration["Provider"]?.ToLower();
+            if (_dbProvider == null)
+                _dbProvider = DbDefaultProvider;
 
             ConfigureDb(_services, _dbProvider, _dbConnectionStr);
 
@@ -103,7 +106,7 @@ namespace KvantCard
         public IConfiguration LoadConfig()
         {
             var builder = new ConfigurationBuilder()
-//                .SetBasePath(ContentRoot)
+                //                .SetBasePath(ContentRoot)
                 .AddJsonFile("appsettings.json",
                     optional: true,
                     reloadOnChange: true);
@@ -111,11 +114,13 @@ namespace KvantCard
             return builder.Build();
         }
 
-        public static bool IsConsole()
+        public static bool IsConsole(string[] args = null)
         {
             bool isConsole;
-            if (Debugger.IsAttached 
-                || (_instance?._args != null && _instance._args.Contains("--console"))
+            if (args == null)
+                args = _instance?._args;
+            if (Debugger.IsAttached
+                || (args != null && args.Contains("--console"))
                 || string.Equals(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName).ToUpperInvariant(), "EF.EXE", StringComparison.Ordinal)
                 || string.Equals(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName).ToUpperInvariant(), "RESHARPERTESTRUNNER32.EXE", StringComparison.Ordinal)
                 || string.Equals(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName).ToUpperInvariant(), "RESHARPERTESTRUNNER64.EXE", StringComparison.Ordinal)
@@ -128,15 +133,15 @@ namespace KvantCard
             return isConsole;
         }
 
-        public static string GetContentPath(string projectName)
+        public static string GetContentPath(string projectName, string[] args = null)
         {
             lock (Lock)
             {
                 if (_contentRoot != null)
                     return _contentRoot;
                 //set ContenRoot directory
-                var root = IsConsole() 
-                    ? Directory.GetCurrentDirectory() 
+                var root = IsConsole(args)
+                    ? Directory.GetCurrentDirectory()
                     : Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
 
                 if (root.LastIndexOf(projectName, StringComparison.Ordinal) >= 0)
@@ -156,7 +161,7 @@ namespace KvantCard
             return _contentRoot;
         }
 
-        public void ConfigureDb(DbContextOptionsBuilder options, string provider, string connectionStr)
+        public void ConfigureWithDbBuilder(DbContextOptionsBuilder options, string provider, string connectionStr)
         {
             options.EnableSensitiveDataLogging();
             if (provider == "sqlite")
@@ -168,7 +173,7 @@ namespace KvantCard
                     connectionStr = $"Data Source={dbFileName};";
                 }
 
-                options.UseSqlite(connectionStr);
+                options.UseSqlite(connectionStr, b => { b.MigrationsAssembly("KvantCard"); });
             }
             else if (provider == "mysql")
             {
@@ -196,12 +201,10 @@ namespace KvantCard
         private void ConfigureDb(IServiceCollection services, string provider, string connectionStr)
         {
             // Check Provider and get ConnectionString
-            services.AddDbContext<Db>(options => { ConfigureDb(options, provider, connectionStr); }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
+            services.AddDbContext<Db>(options => { ConfigureWithDbBuilder(options, provider, connectionStr); }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
         }
 
-        
-
-        private void PrepareStart(IServiceProvider provider)
+        protected virtual void PrepareStart(IServiceProvider provider)
         {
             using (var scope = provider.CreateScope())
             using (var db = scope.ServiceProvider.GetRequiredService<Db>())

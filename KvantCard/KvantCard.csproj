@@ -81,9 +81,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppStarter.cs" />
-    <Compile Include="Migrations\20190128055803_Initial.cs" />
-    <Compile Include="Migrations\20190128055803_Initial.designer.cs">
-      <DependentUpon>20190128055803_Initial.cs</DependentUpon>
+    <Compile Include="DesignTimeContextFactory.cs" />
+    <Compile Include="Migrations\20190212223056_Initial.cs" />
+    <Compile Include="Migrations\20190212223056_Initial.designer.cs">
+      <DependentUpon>20190212223056_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbModelSnapshot.cs" />
     <Compile Include="View\Students\StudentAddEdit.xaml.cs">
