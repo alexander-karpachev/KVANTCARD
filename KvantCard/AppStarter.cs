@@ -107,9 +107,9 @@ namespace KvantCard
         {
             var builder = new ConfigurationBuilder()
                 //                .SetBasePath(ContentRoot)
-                .AddJsonFile("appsettings.json",
-                    optional: true,
-                    reloadOnChange: true);
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.private.json", true, true)
+                .AddCommandLine(_args ?? new string[0]);
 
             return builder.Build();
         }

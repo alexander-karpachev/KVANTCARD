@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /db.sqlite
 /db-kvant-test-*.sqlite
+*.sqlite
