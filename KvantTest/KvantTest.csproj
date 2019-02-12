@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KvantCard\KvantCard.csproj" />
+    <ProjectReference Include="..\KvantShared\KvantShared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

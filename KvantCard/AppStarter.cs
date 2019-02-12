@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KvantCard.Model;
-using KvantCard.Repos;
-using KvantCard.Utils;
 using KvantCard.View;
+using KvantShared;
+using KvantShared.Repos;
+using KvantShared.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +20,7 @@ using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBui
 
 namespace KvantCard
 {
-    public class AppStarter : IDisposable
+    public class AppStarter : IAppStarter, IDisposable
     {
         private static AppStarter _instance;
         private static readonly object Lock = new object();
@@ -42,7 +42,6 @@ namespace KvantCard
         public static IConfiguration Configuration => _instance._configuration;
         public static ServiceProvider Provider => _instance._provider;
         public static string ContentRoot => _contentRoot;
-
 
         public AppStarter(string[] args, string projectName = ProjectName) : this(args, null, null, projectName)
         {
@@ -157,45 +156,50 @@ namespace KvantCard
             return _contentRoot;
         }
 
+        public void ConfigureDb(DbContextOptionsBuilder options, string provider, string connectionStr)
+        {
+            options.EnableSensitiveDataLogging();
+            if (provider == "sqlite")
+            {
+                if (connectionStr == null)
+                {
+                    var dbName = _configuration["ConnectionStrings:SQLite"] ?? DbFileName;
+                    var dbFileName = Path.GetFullPath(Path.Combine(ContentRoot, dbName));
+                    connectionStr = $"Data Source={dbFileName};";
+                }
+
+                options.UseSqlite(connectionStr);
+            }
+            else if (provider == "mysql")
+            {
+                options.UseMySql(connectionStr ?? _configuration["ConnectionStrings:MySQL"]);
+            }
+            else if (provider == "mssql")
+            {
+                options.UseSqlServer(connectionStr ?? _configuration["ConnectionStrings:MSSQL"]);
+            }
+            else if (provider == "postgresql")
+            {
+                options.UseNpgsql(connectionStr ?? _configuration["ConnectionStrings:PostgreSQL"]);
+                //}
+                //else if (sqlType == "oracle")
+                //{
+                //        options.UseOracle(_configuration["Oracle"]));
+            }
+            else
+            {
+                throw new ArgumentException("Not a valid database type");
+            };
+        }
+
+
         private void ConfigureDb(IServiceCollection services, string provider, string connectionStr)
         {
             // Check Provider and get ConnectionString
-            services.AddDbContext<Db>(options =>
-            {
-                options.EnableSensitiveDataLogging();
-                if (provider == "sqlite")
-                {
-                    if (connectionStr == null)
-                    {
-                        var dbName = _configuration["ConnectionStrings:SQLite"] ?? DbFileName;
-                        var dbFileName = Path.GetFullPath(Path.Combine(ContentRoot, dbName));
-                        connectionStr = $"Data Source={dbFileName};";
-                    }
-
-                    options.UseSqlite(connectionStr);
-                }
-                else if (provider == "mysql")
-                {
-                    options.UseMySql(connectionStr ?? _configuration["ConnectionStrings:MySQL"]);
-                }
-                else if (provider == "mssql")
-                {
-                    options.UseSqlServer(connectionStr ?? _configuration["ConnectionStrings:MSSQL"]);
-                }
-                else if (provider == "postgresql")
-                {
-                    options.UseNpgsql(connectionStr ?? _configuration["ConnectionStrings:PostgreSQL"]);
-                    //}
-                    //else if (sqlType == "oracle")
-                    //{
-                    //        options.UseOracle(_configuration["Oracle"]));
-                }
-                else
-                {
-                    throw new ArgumentException("Not a valid database type");
-                }
-            }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
+            services.AddDbContext<Db>(options => { ConfigureDb(options, provider, connectionStr); }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
         }
+
+        
 
         private void PrepareStart(IServiceProvider provider)
         {
@@ -209,6 +213,8 @@ namespace KvantCard
 
         private void RegisterServices(IServiceCollection services)
         {
+            services.AddSingleton<IAppStarter>(this);
+
             // Configure AutoMapper
             services.AddAutoMapper();
 
@@ -225,5 +231,7 @@ namespace KvantCard
         {
             _provider?.Dispose();
         }
+
+        string IAppStarter.ContentRoot => ContentRoot;
     }
 }

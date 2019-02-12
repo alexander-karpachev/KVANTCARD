@@ -6,10 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using KvantCard.Model;
-using KvantCard.Repos;
-using KvantCard.Utils;
 using KvantCard.View;
+using KvantShared.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +35,7 @@ namespace KvantCard
         protected override void OnStartup(StartupEventArgs e)
         {
             _starter = new AppStarter(e.Args);
-            var isConsole = AppStarter.IsConsole();
+            //var isConsole = AppStarter.IsConsole();
 
             var workWindow = AppStarter.Provider.GetService<MainWindow>();
             workWindow.Show();

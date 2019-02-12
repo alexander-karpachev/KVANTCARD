@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KvantCard;
+using KvantShared.Utils;
 using Xunit;
 
 namespace KvantTest
