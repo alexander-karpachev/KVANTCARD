@@ -18,7 +18,7 @@ namespace KvantShared.Repos
         {
             if (include == null)
                 return set;
-            var result = include.Aggregate(set, (current, includeExpression) => current.Include(includeExpression));
+            var result = include.Aggregate(set, EntityFrameworkQueryableExtensions.Include);
 
             return result;
         }

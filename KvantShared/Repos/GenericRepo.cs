@@ -49,22 +49,22 @@ namespace KvantShared.Repos
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet.Include(_include).AsTracking(_tracking).ToList();
+            return RepoExtensions.Include(_dbSet, _include).AsTracking(_tracking).ToList();
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> match)
         {
-            return _dbSet.Include(_include).AsTracking(_tracking).Where(match).ToList();
+            return RepoExtensions.Include(_dbSet, _include).AsTracking(_tracking).Where(match).ToList();
         }
 
         public T GetById(int id)
         {
-            return _dbSet.Include(_include).AsTracking(_tracking).FirstOrDefault(e => e.Id == id);
+            return RepoExtensions.Include(_dbSet, _include).AsTracking(_tracking).FirstOrDefault(e => e.Id == id);
         }
 
         public T Find(Expression<Func<T, bool>> match)
         {
-            return _dbSet.Include(_include).AsTracking(_tracking).FirstOrDefault(match);
+            return RepoExtensions.Include(_dbSet, _include).AsTracking(_tracking).FirstOrDefault(match);
         }
 
         public IList<T> UpdateOrCreate(IList<T> items, params Expression<Func<T, object>>[] excludeFromUpdate)

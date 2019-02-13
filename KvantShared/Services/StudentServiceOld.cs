@@ -7,26 +7,24 @@ namespace KvantShared.Services
 {
     public class StudentServiceOld
     {
-        public List<String> navigationItems { get; set; }
+        public List<String> NavigationItems { get; set; }
 
-        private String selectedNavigationItem;
+        private String _selectedNavigationItem;
 
         public String SelectedNavigationItem
         {
-            get { return selectedNavigationItem; }
-            set { selectedNavigationItem = value; }
+            get { return _selectedNavigationItem; }
+            set { _selectedNavigationItem = value; }
         }
 
 
-        public ObservableCollection<Student> students { get; set; }
-        private Student selectedStudent;
+        public ObservableCollection<Student> Students { get; set; }
+        private Student _selectedStudent;
         public Student SelectedStudent
         {
-            get { return selectedStudent; }
-            set { selectedStudent = value; }
+            get { return _selectedStudent; }
+            set { _selectedStudent = value; }
         }
-
-        public List<DictionaryItem> Kvantums { get; set; }
 
         //public NewStudentCommand newStudentCommand { get; set; }
 
@@ -35,19 +33,18 @@ namespace KvantShared.Services
             //newStudentCommand = new NewStudentCommand(this);
 
             //TODO: Nav menu here ???
-            navigationItems = new List<String>
+            NavigationItems = new List<String>
             {
                 "Учащиеся",
                 "Наставники",
                 "Администрация"
             };
 
-            Kvantums = new List<DictionaryItem>();
             //foreach (var item in DatabaseHelper.LoadDict("kvantum"))
             //    Kvantums.Add(item);
 
             //TODO: Read table
-            students = new ObservableCollection<Student>();
+            Students = new ObservableCollection<Student>();
             //foreach (var item in DatabaseHelper.AllStudents())
             //{
             //    (item as Student).KvantumDict = Kvantums;

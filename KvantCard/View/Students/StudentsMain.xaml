@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KvantCard.View.Students"
-             xmlns:transiс="clr-namespace:Transitionals.Controls;assembly=Transitionals"
-             xmlns:transitions="clr-namespace:Transitionals.Transitions;assembly=Transitionals"
              xmlns:listAddEdit="clr-namespace:KvantControls.ListAddEdit;assembly=KvantControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

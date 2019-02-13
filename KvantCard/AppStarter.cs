@@ -22,7 +22,7 @@ namespace KvantCard
 {
     public class AppStarter : IAppStarter, IDisposable
     {
-        private static AppStarter _instance;
+        private bool _migrate;
         private static readonly object Lock = new object();
         private static string _projectName;
         public static string _contentRoot;
@@ -40,21 +40,21 @@ namespace KvantCard
         private IServiceCollection _services;
         private ServiceProvider _provider;
 
-        public static IConfiguration Configuration => _instance._configuration;
-        public static ServiceProvider Provider => _instance._provider;
-        public static string ContentRoot => _contentRoot;
+        public IConfiguration Configuration => _configuration;
+        public ServiceProvider Provider => _provider;
+        public string ContentRoot => _contentRoot;
 
         public AppStarter(string[] args, string projectName = ProjectName) : this(args, null, null, projectName)
         {
         }
 
-        public AppStarter(string[] args, string dbProvider, string dbConnectionStr, string projectName)
+        public AppStarter(string[] args, string dbProvider, string dbConnectionStr, string projectName,
+            bool migrate = true)
         {
             lock (Lock)
             {
-                if (_instance != null) return;
-                _instance = this;
-                _instance._args = args;
+                _args = args;
+                _migrate = migrate;
                 _projectName = projectName;
                 _dbConnectionStr = dbConnectionStr;
                 _dbProvider = dbProvider;
@@ -106,10 +106,11 @@ namespace KvantCard
         public IConfiguration LoadConfig()
         {
             var builder = new ConfigurationBuilder()
-                //                .SetBasePath(ContentRoot)
+                // .SetBasePath(ContentRoot)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile("appsettings.private.json", true, true)
-                .AddCommandLine(_args ?? new string[0]);
+                .AddEnvironmentVariables()
+                .AddCommandLine((_args ?? new string[0]).Where(e => string.Compare("--console", e.ToLower(), StringComparison.Ordinal) != 0).ToArray());
 
             return builder.Build();
         }
@@ -117,8 +118,6 @@ namespace KvantCard
         public static bool IsConsole(string[] args = null)
         {
             bool isConsole;
-            if (args == null)
-                args = _instance?._args;
             if (Debugger.IsAttached
                 || (args != null && args.Contains("--console"))
                 || string.Equals(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName).ToUpperInvariant(), "EF.EXE", StringComparison.Ordinal)
@@ -148,7 +147,7 @@ namespace KvantCard
                 {
                     root = root.Substring(0,
                         root.LastIndexOf(projectName, StringComparison.Ordinal) + projectName.Length);
-                    root = Path.GetFullPath(Path.Combine(root, ".."));
+                    root = Path.GetFullPath(Path.Combine(root, "..")); // TODO А нужно ли? Мы "перепрыгиваем" в папку с проектом. Хорошо в отладке, но в работе?..
                 }
 
                 _contentRoot = root;
@@ -210,7 +209,8 @@ namespace KvantCard
             using (var db = scope.ServiceProvider.GetRequiredService<Db>())
             {
                 db.Database.OpenConnection();
-                db.Database.Migrate();
+                if (_migrate)
+                    db.Database.Migrate();
             }
         }
 
@@ -225,6 +225,7 @@ namespace KvantCard
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 
             // Services
+            this.RegisterSharedServices(services);
 
             // Windows
             services.AddSingleton<MainWindow>();

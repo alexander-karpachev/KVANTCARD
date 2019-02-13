@@ -25,8 +25,11 @@ namespace KvantShared.Utils
                 try
                 {
                     var type = typeof(Profile);
-                    allTypes = AppDomain.CurrentDomain.GetAssemblies()
-                        .Where(e => e.FullName.ToUpperInvariant().StartsWith("PD2.", StringComparison.InvariantCulture))
+                    var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                            .Where(e => e.FullName.ToUpperInvariant()
+                                .StartsWith("KVANT", StringComparison.InvariantCulture))
+                        ;
+                    allTypes = assemblies
                         .SelectMany(s => s.GetTypes())
                         .Where(p => !p.IsInterface)
                         .ToList();

@@ -14,7 +14,7 @@ namespace KvantCard.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
 
             modelBuilder.Entity("KvantShared.Model.Address", b =>
                 {
@@ -62,24 +62,6 @@ namespace KvantCard.Migrations
                     b.ToTable("Contact");
                 });
 
-            modelBuilder.Entity("KvantShared.Model.DictionaryItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<DateTime?>("Deleted");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime>("Updated");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DictionaryItems");
-                });
-
             modelBuilder.Entity("KvantShared.Model.Parent", b =>
                 {
                     b.Property<int>("Id")
@@ -112,6 +94,52 @@ namespace KvantCard.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("Parents");
+                });
+
+            modelBuilder.Entity("KvantShared.Model.Record", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
+                    b.Property<int?>("ReferenceId");
+
+                    b.Property<DateTime>("Updated");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReferenceId");
+
+                    b.ToTable("Records");
+                });
+
+            modelBuilder.Entity("KvantShared.Model.Reference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<bool>("Complex");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime?>("Deleted");
+
+                    b.Property<string>("ItemClass");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime>("Updated");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("References");
                 });
 
             modelBuilder.Entity("KvantShared.Model.Student", b =>
@@ -176,6 +204,14 @@ namespace KvantCard.Migrations
                     b.HasOne("KvantShared.Model.Student")
                         .WithMany("Parents")
                         .HasForeignKey("StudentId");
+                });
+
+            modelBuilder.Entity("KvantShared.Model.Record", b =>
+                {
+                    b.HasOne("KvantShared.Model.Reference", "Reference")
+                        .WithMany("Records")
+                        .HasForeignKey("ReferenceId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("KvantShared.Model.Student", b =>

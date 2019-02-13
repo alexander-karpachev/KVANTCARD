@@ -42,7 +42,8 @@ namespace KvantShared
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Parent> Parents { get; set; }
-        public DbSet<DictionaryItem> DictionaryItems { get; set; }
+        public DbSet<Record> Records { get; set; }
+        public DbSet<Reference> References { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -51,8 +52,21 @@ namespace KvantShared
             builder.Entity<Student>(etb =>
             {
                 etb.HasKey(e => e.Id);
-                etb.HasMany<Parent>(e => e.Parents);
+                etb.HasMany(e => e.Parents);
             });
+
+            builder.Entity<Reference>(etb =>
+            {
+                etb.HasKey(e => e.Id);
+                etb.HasMany(e => e.Records).WithOne(e=>e.Reference).OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<Record>(etb =>
+            {
+                etb.HasKey(e => e.Id);
+                etb.HasOne(e => e.Reference).WithMany(e => e.Records).OnDelete(DeleteBehavior.Restrict);
+            });
+
         }
 
         public IDbContextTransaction BeginTransaction()

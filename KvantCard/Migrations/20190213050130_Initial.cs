@@ -30,7 +30,7 @@ namespace KvantCard.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DictionaryItems",
+                name: "References",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -41,11 +41,14 @@ namespace KvantCard.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Code = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Complex = table.Column<bool>(nullable: false),
+                    ItemClass = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DictionaryItems", x => x.Id);
+                    table.PrimaryKey("PK_References", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,6 +118,32 @@ namespace KvantCard.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Records",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Updated = table.Column<DateTime>(nullable: false),
+                    Deleted = table.Column<DateTime>(nullable: true),
+                    ReferenceId = table.Column<int>(nullable: true),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Records", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Records_References_ReferenceId",
+                        column: x => x.ReferenceId,
+                        principalTable: "References",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Parents",
                 columns: table => new
                 {
@@ -167,6 +196,11 @@ namespace KvantCard.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Records_ReferenceId",
+                table: "Records",
+                column: "ReferenceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_ContactId",
                 table: "Students",
                 column: "ContactId");
@@ -178,13 +212,16 @@ namespace KvantCard.Migrations
                 name: "Address");
 
             migrationBuilder.DropTable(
-                name: "DictionaryItems");
-
-            migrationBuilder.DropTable(
                 name: "Parents");
 
             migrationBuilder.DropTable(
+                name: "Records");
+
+            migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "References");
 
             migrationBuilder.DropTable(
                 name: "Contact");

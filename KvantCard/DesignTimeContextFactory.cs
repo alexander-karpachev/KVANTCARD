@@ -17,8 +17,8 @@ namespace KvantCard
             var contentRoot = AppStarter.GetContentPath(AppStarter.ProjectName, args);
             var dbFileName = Path.GetFullPath(Path.Combine(contentRoot, AppStarter.DbFileName));
             var conStr = $"Data Source={dbFileName};";
-            var starter = new AppStarter(args, AppStarter.DbDefaultProvider, conStr, AppStarter.ProjectName);
-            var db = AppStarter.Provider.GetRequiredService<Db>();
+            var starter = new AppStarter(args, AppStarter.DbDefaultProvider, conStr, AppStarter.ProjectName, false);
+            var db = starter.Provider.GetRequiredService<Db>();
             return db;
         }
     }

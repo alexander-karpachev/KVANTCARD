@@ -18,17 +18,17 @@ namespace KvantTest
     {
         private AppStarter _starter;
         public const string ProjectName = @"\KvantTest";
-        public const string DbTestName = @"db-kvant-test-{0}.sqlite";
-
+        //public const string DbTestName = @"db-kvant-test-{0:yyyy-MM-dd_HH-mm-ss.fff}-{1}.sqlite";
+        public const string DbTestName = @"db-kvant-test-{0:yyyy-MM-dd_HHmmss.fff}.sqlite";
 
         public IServiceCollection Services { get; }
 
-        public ServiceProvider Provider => AppStarter.Provider;
+        public ServiceProvider Provider => _starter.Provider;
 
         public TestAppFixture()
         {
             var rnd = new Random();
-            var dbName = string.Format(DbTestName, rnd.Next());
+            var dbName = string.Format(DbTestName, DateTime.Now, rnd.Next());
             var contentRoot = AppStarter.GetContentPath(ProjectName);
             var dbFileName = Path.GetFullPath(Path.Combine(contentRoot, dbName));
             var conStr = $"Data Source={dbFileName};";

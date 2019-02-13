@@ -37,7 +37,7 @@ namespace KvantCard
             _starter = new AppStarter(e.Args);
             //var isConsole = AppStarter.IsConsole();
 
-            var workWindow = AppStarter.Provider.GetService<MainWindow>();
+            var workWindow = _starter.Provider.GetService<MainWindow>();
             workWindow.Show();
             base.OnStartup(e);
         }
