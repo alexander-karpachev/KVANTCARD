@@ -20,8 +20,7 @@ namespace KvantShared.Services
         private readonly IMapper _mapper;
         private readonly ILogger<ReferenceService> _logger;
 
-        public ReferenceService(UnitOfWorkFactory workFactory,
-            IMapper mapper, ILogger<ReferenceService> logger)
+        public ReferenceService(UnitOfWorkFactory workFactory, IMapper mapper, ILogger<ReferenceService> logger)
         {
             _workFactory = workFactory;
             _mapper = mapper;

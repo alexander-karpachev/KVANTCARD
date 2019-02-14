@@ -23,7 +23,7 @@ namespace KvantTest.Services
             var reference = _referenceService.Create("Simple_1", "Simple Reference #1 И на русском");
             Assert.NotNull(reference);
 
-            var referenceEx = _referenceService.Create< ExtendedRecordClass>("Extended #2", "Расширенный справочник №2");
+            var referenceEx = _referenceService.Create<ExtendedRecordClass>("Extended #2", "Расширенный справочник №2");
             Assert.NotNull(reference);
             Assert.Equal(typeof(ExtendedRecordClass), referenceEx.ItemClass);
             Assert.True(referenceEx.Complex);
@@ -43,10 +43,22 @@ namespace KvantTest.Services
         }
 
         [Fact]
+        public void ReferenceCreateTestFromVm()
+        {
+            var vm = new ReferenceVm() {Code = "TestCodeFromVm", Title = "TestTitleVm"};
+            _referenceService.Create(vm);
+            Assert.True(vm.Id > 0);
+
+            _referenceService.Remove(vm);
+
+            Assert.Empty(_referenceService.AllReferences());
+        }
+
+        [Fact]
         public void TestRecordCreation()
         {
             var referenceEx = _referenceService.Create<ExtendedRecordClass>("Extended #2", "Расширенный справочник №3");
-            var record = _referenceService.CreateRecord("ExteNded #2", new ExtendedRecordClass() {Description = "Desc", Title = "Title"});
+            var record = _referenceService.CreateRecord("ExteNded #2", new ExtendedRecordClass() { Description = "Desc", Title = "Title" });
             Assert.NotNull(record);
             Assert.True(record.Id > 0);
 
@@ -90,7 +102,7 @@ namespace KvantTest.Services
         {
             public string Title { get; set; }
 
-            public string  Description { get; set; }
+            public string Description { get; set; }
 
         }
     }
