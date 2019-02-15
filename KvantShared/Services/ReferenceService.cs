@@ -157,7 +157,9 @@ namespace KvantShared.Services
                 if (reference.ItemClass != recType)
                     throw new Exception("Класс записи и словаря не совпадают");
 
-                var content = reference.Complex ? JsonHelper.Serialize(vm) : (vm as SimpleRecordVm)?.Title;
+                var content = reference.Complex
+                    ? JsonHelper.Serialize(vm, () => vm.Id, () => vm.Created, () => vm.Updated, () => vm.Deleted)
+                    : (vm as SimpleRecordVm)?.Title;
                 var rec = new Record
                 {
                     Reference = reference,
@@ -204,7 +206,9 @@ namespace KvantShared.Services
             using (var uow = _workFactory.Create())
             {
                 item = uow.Repo<Record>().AsTracking(false).Include(e => e.Reference).GetById(vm.Id);
-                var content = item.Reference.Complex ? JsonHelper.Serialize(vm) : (vm as SimpleRecordVm)?.Title;
+                var content = item.Reference.Complex
+                    ? JsonHelper.Serialize(vm, () => vm.Id, () => vm.Created, () => vm.Updated, () => vm.Deleted) 
+                    : (vm as SimpleRecordVm)?.Title;
                 item.Content = content;
                 item = uow.Repo<Record>().Update(item);
 

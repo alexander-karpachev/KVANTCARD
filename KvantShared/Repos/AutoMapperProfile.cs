@@ -12,7 +12,9 @@ namespace KvantShared.Repos
 
         public AutoMapperProfile()
         {
-            CreateMap<ReferenceVm, Reference>().IgnoreMember(o => o.ItemClass).AfterMap((v, i) => { i.ItemClass = v.ItemClass?.AssemblyQualifiedName; });
+            CreateMap<ReferenceVm, Reference>().IgnoreMember(o => o.ItemClass).AfterMap((v, i) => {
+                i.ItemClass = v.ItemClass?.FullName + v.ItemClass?.Assembly.GetName().Name;
+            });
             CreateMap<Reference, ReferenceVm>().IgnoreMember(o => o.ItemClass).AfterMap((i, v) => { v.ItemClass = i.ItemClass != null ? Type.GetType(i.ItemClass) : null; });
 
             CreateMap<SimpleRecordVm, Record>().AfterMap((v, i) => { i.Content = v.Title; });

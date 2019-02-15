@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -7,16 +8,18 @@ namespace KvantShared.Utils
 {
     public class JsonHelper
     {
-        private static readonly JsonSerializerSettings SerializerSettings;
+        private static readonly JsonSerializerSettings DefaultSettings;
         private const Formatting Indented = Formatting.Indented;
 
         static JsonHelper()
         {
-            SerializerSettings = new JsonSerializerSettings()
-            {
-                TypeNameHandling = TypeNameHandling.All
-            };
+            DefaultSettings = CreateDefaultSettings;
         }
+
+        private static JsonSerializerSettings CreateDefaultSettings => new JsonSerializerSettings()
+        {
+            TypeNameHandling = TypeNameHandling.All
+        };
 
         /// <summary>
         /// Convert object to JSON string representation
@@ -25,7 +28,15 @@ namespace KvantShared.Utils
         /// <returns></returns>
         public static string Serialize(object o)
         {
-            var serialized = JsonConvert.SerializeObject(o, Indented, SerializerSettings);
+            var serialized = JsonConvert.SerializeObject(o, Indented, DefaultSettings);
+            return serialized;
+        }
+
+        public static string Serialize<T>(T o, params Expression<Func<object>>[] exclude)
+        {
+            var settings = DefaultSettings;
+            settings.ContractResolver = new IgnorableSerializerContractResolver<T>(exclude);
+            var serialized = JsonConvert.SerializeObject(o, Indented, settings);
             return serialized;
         }
 
@@ -37,7 +48,7 @@ namespace KvantShared.Utils
         /// <returns></returns>
         public static T Deserialize<T>(string str)
         {
-            var o = JsonConvert.DeserializeObject<T>(str, SerializerSettings);
+            var o = JsonConvert.DeserializeObject<T>(str, DefaultSettings);
             return o;
         }
 
@@ -49,20 +60,20 @@ namespace KvantShared.Utils
         /// <returns></returns>
         public static object Deserialize(string str, Type type)
         {
-            var o = JsonConvert.DeserializeObject(str, type, SerializerSettings);
+            var o = JsonConvert.DeserializeObject(str, type, DefaultSettings);
             return o;
         }
 
         /// <summary>
         /// Populate existing object with values from JSON string.
-        /// DANGER!!! Existing properties just added, not overrided. So internal collections will retain old values.
+        /// DANGER!!! Existing properties just added, not overriden. So internal collections will retain old values.
         /// Clear collections by hand before calling this method!
         /// </summary>
         /// <param name="str">JSON string</param>
         /// <param name="dest">Object to populate with new values</param>
         public static void Populate(string str, object dest)
         {
-            JsonConvert.PopulateObject(str, dest, SerializerSettings);
+            JsonConvert.PopulateObject(str, dest, DefaultSettings);
         }
     }
 }
