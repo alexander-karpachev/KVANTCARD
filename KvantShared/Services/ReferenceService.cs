@@ -37,6 +37,16 @@ namespace KvantShared.Services
             }
         }
 
+        public ReferenceVm GetByCode(string refCode)
+        {
+            using (var uow = _workFactory.Create())
+            {
+                var item = uow.Repo<Reference>().GetAll().FirstOrDefault(e => e.Deleted == null && string.Equals(e.Code, refCode, StringComparison.InvariantCultureIgnoreCase));
+                var vm = _mapper.Map<Reference, ReferenceVm>(item);
+                return vm;
+            }
+        }
+
         public void Remove(ReferenceVm vm)
         {
             vm.Deleted = DateTime.Now;

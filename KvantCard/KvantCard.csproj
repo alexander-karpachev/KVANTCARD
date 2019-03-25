@@ -61,6 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\SimpleRef\SimpleRefAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleRef\SimpleRefList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleRef\SimpleRefMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Students\StudentAddEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +100,16 @@
       <DependentUpon>20190213050130_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbModelSnapshot.cs" />
+    <Compile Include="View\SimpleRef\SimpleRefAddEdit.xaml.cs">
+      <DependentUpon>SimpleRefAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleRef\SimpleRefList.xaml.cs">
+      <DependentUpon>SimpleRefList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleRef\SimpleRefMain.xaml.cs">
+      <DependentUpon>SimpleRefMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleRef\SimpleRefVm.cs" />
     <Compile Include="View\Students\StudentAddEdit.xaml.cs">
       <DependentUpon>StudentAddEdit.xaml</DependentUpon>
     </Compile>
