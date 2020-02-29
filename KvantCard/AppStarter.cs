@@ -187,7 +187,7 @@ namespace KvantCard
                 options.UseNpgsql(connectionStr ?? _configuration["ConnectionStrings:PostgreSQL"]);
                 //}
                 //else if (sqlType == "oracle")
-                //{
+                //{L
                 //        options.UseOracle(_configuration["Oracle"]));
             }
             else
