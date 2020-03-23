@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KvantCard.View;
+﻿using KvantCard.View;
 using KvantShared;
 using KvantShared.Repos;
 using KvantShared.Utils;
@@ -16,6 +9,10 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 namespace KvantCard
